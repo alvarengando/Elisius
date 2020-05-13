@@ -49,7 +49,7 @@ var spreadsheet = SpreadsheetApp.getActive();
     
             // Refórmulação
            spreadsheet.getRangeList(['K4:K8']).clear({contentsOnly: true, skipFilteredRows: true});
-           spreadsheet.getRange('K7').setFormula('=IF(K6="";"";SWITCH(K5;"P13";AV4;"P20";AW4;"P45";AX4 ))'); //Valor produto
+           spreadsheet.getRange('K7').setFormula('=IF(K6="";"";AW4)'); //Valor produto
            spreadsheet.getRange('K8').setFormula('=IF(K7="";""; K6*K7)'); //Valor total produto
            spreadsheet.getRange('I25').activate().setFormula('=IF(L18="";"";L18)');
      }
@@ -171,12 +171,12 @@ function SalvarVenda() {
 
  // Salvar Recebimentos
  
-                   recebimentosDados.getRange(recebimentosDados.getLastRow()+1,1,1,10).setValues([[idRecebimento, idVenda,
-                   idCliente, cliente, dataVenda, dataRecebimento, totalVenda, valorRecebido, formaPagamento, restante]]);
+       recebimentosDados.getRange(recebimentosDados.getLastRow()+1,1,1,10).setValues([[idRecebimento, idVenda,
+       idCliente, cliente, dataVenda, dataRecebimento, totalVenda, valorRecebido, restante, formaPagamento ]]);
 
 limparVenda();
 
-Browser.msgBox("Informativo", "Registro salvo com sucesso!", Browser.Buttons.OK)
+Browser.msgBox("Informativo", "Registro salvo com sucesso!", Browser.Buttons.OK);
 
 
 
